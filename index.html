@@ -1,0 +1,1985 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="cult.fit - India's premium fitness platform. Join group workouts, gym, yoga, sports. Book your free trial now!" />
+  <title>cult.fit | Premium Fitness Redesign 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+/* ===== CULT.FIT PREMIUM REDESIGN 2026 ===== */
+/* CSS Reset & Variables */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: #0d0f1a; color: #f0f0f0; overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+body.light-mode { background: #f5f7ff; color: #1a1a2e; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #5a52e0;
+  --accent: #ff6b6b;
+  --accent2: #ffd93d;
+  --success: #4ade80;
+  --bg-dark: #0d0f1a;
+  --bg-card: rgba(255,255,255,0.05);
+  --bg-card-hover: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.1);
+  --text-muted: rgba(255,255,255,0.6);
+  --glass: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,0.12);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-hover: 0 16px 48px rgba(0,0,0,0.6);
+  --grad: linear-gradient(135deg, #6c63ff 0%, #ff6b6b 50%, #ffd93d 100%);
+}
+body.light-mode { --bg-dark: #f5f7ff; --bg-card: rgba(0,0,0,0.04); --bg-card-hover: rgba(0,0,0,0.07); --border: rgba(0,0,0,0.1); --text-muted: rgba(0,0,0,0.55); --glass: rgba(255,255,255,0.8); --glass-border: rgba(0,0,0,0.12); --shadow: 0 8px 32px rgba(0,0,0,0.1); --shadow-hover: 0 16px 48px rgba(0,0,0,0.2); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Gradient text */
+.grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* Section Header */
+.sec-hdr { text-align: center; margin-bottom: 64px; }
+.sec-hdr h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+.sec-hdr p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+.sec-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.35); color: #8b85ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+
+/* LOADER */
+.loader { position: fixed; inset: 0; background: #0d0f1a; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s, visibility 0.5s; }
+.loader.hidden { opacity: 0; visibility: hidden; }
+.loader-inner { text-align: center; }
+.loader-logo { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 32px; }
+.loader-logo .lc { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.loader-logo .ld { color: #6c63ff; }
+.loader-bar { width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; margin: 0 auto 16px; }
+.loader-bar-fill { height: 100%; background: var(--grad); border-radius: 4px; animation: loadFill 2s ease forwards; }
+@keyframes loadFill { from { width: 0 } to { width: 100% } }
+.loader-inner p { color: var(--text-muted); font-size: 0.85rem; }
+
+/* BACK TO TOP */
+.back-to-top { position: fixed; bottom: 100px; right: 28px; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--primary); color: white; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; z-index: 500; opacity: 0; transform: translateY(20px); transition: all 0.3s; box-shadow: 0 4px 20px rgba(108,99,255,0.5); }
+.back-to-top.show { opacity: 1; transform: translateY(0); }
+.back-to-top:hover { background: var(--primary-dark); transform: translateY(-4px); }
+
+/* FAB */
+.fab-wrap { position: fixed; bottom: 28px; right: 28px; z-index: 500; display: flex; flex-direction: column-reverse; align-items: center; gap: 12px; }
+.fab-main { width: 56px; height: 56px; border-radius: 50%; border: none; background: var(--grad); color: white; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(108,99,255,0.6); transition: all 0.3s; }
+.fab-main:hover { transform: scale(1.1) rotate(15deg); }
+.fab-menu { display: flex; flex-direction: column-reverse; gap: 10px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s; }
+.fab-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.fab-item { width: 44px; height: 44px; border-radius: 50%; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: all 0.25s; position: relative; }
+.fab-item:hover { background: var(--primary); transform: scale(1.1); }
+.fab-item[title]:hover::after { content: attr(title); position: absolute; right: 54px; white-space: nowrap; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; }
+
+/* NAVBAR */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all 0.4s; }
+.navbar.scrolled { background: rgba(13,15,26,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 32px rgba(0,0,0,0.4); }
+body.light-mode .navbar.scrolled { background: rgba(245,247,255,0.95); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: 1300px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav-logo { font-size: 1.6rem; font-weight: 900; letter-spacing: -1px; }
+.nav-logo .lc { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.nav-logo .ld { color: #6c63ff; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-link { padding: 10px 16px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.75); transition: all 0.25s; border-radius: var(--radius-sm); }
+body.light-mode .nav-link { color: rgba(0,0,0,0.65); }
+.nav-link:hover, .nav-link.active { color: white; background: rgba(255,255,255,0.1); }
+body.light-mode .nav-link:hover, body.light-mode .nav-link.active { color: #1a1a2e; background: rgba(0,0,0,0.07); }
+.nav-drop { position: relative; }
+.nav-drop:hover .drop-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.drop-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(8px); width: 220px; background: rgba(20,22,40,0.97); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px; opacity: 0; visibility: hidden; transition: all 0.25s; z-index: 100; box-shadow: var(--shadow); }
+body.light-mode .drop-menu { background: rgba(245,247,255,0.98); }
+.drop-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
+body.light-mode .drop-item { color: rgba(0,0,0,0.65); }
+.drop-item:hover { background: rgba(255,255,255,0.08); color: white; }
+body.light-mode .drop-item:hover { background: rgba(0,0,0,0.06); color: #1a1a2e; }
+.drop-item i { color: var(--primary); width: 16px; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.theme-btn, .search-btn { width: 38px; height: 38px; border: none; border-radius: 50%; background: transparent; color: rgba(255,255,255,0.7); cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+body.light-mode .theme-btn, body.light-mode .search-btn { color: rgba(0,0,0,0.6); }
+.theme-btn:hover, .search-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+body.light-mode .theme-btn:hover, body.light-mode .search-btn:hover { background: rgba(0,0,0,0.07); color: #1a1a2e; }
+.loc-badge { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid var(--border); padding: 6px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.25s; }
+body.light-mode .loc-badge { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.6); }
+.loc-badge:hover { background: rgba(255,255,255,0.15); color: white; }
+.btn-nav-out { padding: 8px 18px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 10px; font-size: 0.8rem; font-weight: 600; color: white; transition: all 0.25s; }
+body.light-mode .btn-nav-out { border-color: rgba(0,0,0,0.25); color: #1a1a2e; }
+.btn-nav-out:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
+.btn-nav-pri { padding: 8px 18px; background: var(--primary); border: none; border-radius: 10px; font-size: 0.8rem; font-weight: 700; color: white; cursor: pointer; transition: all 0.25s; }
+.btn-nav-pri:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(108,99,255,0.5); }
+.ham-btn { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
+.ham-btn span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+body.light-mode .ham-btn span { background: #1a1a2e; }
+.ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.ham-btn.open span:nth-child(2) { opacity: 0; }
+.ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* SEARCH */
+.search-ov { position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,15,26,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px; opacity: 0; visibility: hidden; transition: all 0.3s; }
+body.light-mode .search-ov { background: rgba(245,247,255,0.98); }
+.search-ov.open { opacity: 1; visibility: visible; }
+.search-inner { max-width: 700px; margin: 0 auto; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.07); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; }
+body.light-mode .search-inner { background: rgba(0,0,0,0.05); }
+.search-inner i { color: var(--text-muted); }
+.search-inner input { flex: 1; background: transparent; border: none; outline: none; color: inherit; font-size: 1rem; font-family: 'Poppins', sans-serif; }
+.search-inner button { background: transparent; border: none; cursor: pointer; color: var(--text-muted); font-size: 1rem; transition: color 0.2s; }
+.search-inner button:hover { color: white; }
+.search-tags { display: flex; flex-wrap: wrap; gap: 8px; max-width: 700px; margin: 12px auto 0; }
+.search-tags span { background: rgba(255,255,255,0.07); border: 1px solid var(--border); padding: 5px 14px; border-radius: 50px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
+.search-tags span:hover { background: var(--primary); border-color: var(--primary); color: white; }
+/* HERO */
+.hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 80px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; }
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: orbFloat 8s ease-in-out infinite; }
+.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #6c63ff, transparent); top: -10%; left: -10%; animation-delay: 0s; }
+.orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #ff6b6b, transparent); bottom: 10%; right: -5%; animation-delay: 3s; }
+.orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, #ffd93d, transparent); top: 30%; right: 20%; animation-delay: 6s; }
+@keyframes orbFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -40px); } }
+.hero-body { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; width: 100%; padding: 0 24px; position: relative; z-index: 2; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.35); color: #8b85ff; padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
+.hero-badge i { color: #ff6b6b; }
+.hero-text h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; }
+.hero-text h1 .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-text h1 .accent { color: #ffd93d; }
+.hero-text p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; max-width: 500px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-hp { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: var(--primary); border-radius: 14px; color: white; font-weight: 700; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 24px rgba(108,99,255,0.5); }
+.btn-hp:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(108,99,255,0.7); }
+.btn-hs { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 14px; color: white; font-weight: 600; font-size: 1rem; transition: all 0.3s; backdrop-filter: blur(8px); }
+.btn-hs:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.4); transform: translateY(-3px); }
+body.light-mode .btn-hs { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.15); color: #1a1a2e; }
+.hstats { display: flex; align-items: center; gap: 24px; }
+.hstat { text-align: center; }
+.hnum { font-size: 2rem; font-weight: 900; font-family: 'Manrope', sans-serif; }
+.hunit { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+.hstat p { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+.hdiv { width: 1px; height: 40px; background: var(--border); }
+/* Hero Visual */
+.hero-vis { position: relative; display: flex; justify-content: center; }
+.hero-img-box { position: relative; }
+.img-bg-glow { position: absolute; inset: -30px; background: radial-gradient(circle, rgba(108,99,255,0.3), transparent 70%); border-radius: 50%; filter: blur(30px); z-index: 0; }
+.hero-img { width: 100%; max-width: 480px; border-radius: 28px; position: relative; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.6); object-fit: cover; height: 520px; }
+.float-card { position: absolute; z-index: 2; background: rgba(20,22,40,0.9); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); animation: floatUp 4s ease-in-out infinite; }
+body.light-mode .float-card { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+.fc1 { top: 10%; left: -80px; animation-delay: 0s; }
+.fc2 { bottom: 25%; left: -70px; animation-delay: 2s; }
+.fc3 { top: 30%; right: -80px; animation-delay: 4s; }
+@keyframes floatUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.fci { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.fci.orange { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+.fci.green { background: rgba(74,222,128,0.2); color: #4ade80; }
+.fci.purple { background: rgba(108,99,255,0.2); color: #8b85ff; }
+.fv { font-size: 1rem; font-weight: 700; }
+.fl { font-size: 0.72rem; color: var(--text-muted); }
+/* Scroll hint */
+.scroll-cue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); text-align: center; color: var(--text-muted); font-size: 0.78rem; z-index: 2; }
+.scroll-arrow { width: 36px; height: 36px; border: 1.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 8px auto 0; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* CATEGORIES */
+.categories { padding: 120px 0; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.cat-card { text-align: center; padding: 32px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.35s; cursor: pointer; }
+.cat-card:hover { background: var(--bg-card-hover); transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(108,99,255,0.3); }
+.cat-circle { width: 80px; height: 80px; border-radius: 50%; background: rgba(var(--cc, 108,99,255), 0.15); border: 2px solid rgba(var(--cc, 108,99,255), 0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: var(--cc, #6c63ff); transition: all 0.35s; }
+.cat-card:hover .cat-circle { transform: scale(1.1) rotate(5deg); }
+/* Override with custom property */
+.cat-card[data-t]:hover .cat-circle { box-shadow: 0 0 30px var(--cc, rgba(108,99,255,0.4)); }
+.cat-circle[style*="ff6b6b"] { color: #ff6b6b; background: rgba(255,107,107,0.15); border-color: rgba(255,107,107,0.3); }
+.cat-circle[style*="a78bfa"] { color: #a78bfa; background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.3); }
+.cat-circle[style*="38bdf8"] { color: #38bdf8; background: rgba(56,189,248,0.15); border-color: rgba(56,189,248,0.3); }
+.cat-circle[style*="fb923c"] { color: #fb923c; background: rgba(251,146,60,0.15); border-color: rgba(251,146,60,0.3); }
+.cat-circle[style*="f43f5e"] { color: #f43f5e; background: rgba(244,63,94,0.15); border-color: rgba(244,63,94,0.3); }
+.cat-circle[style*="22d3ee"] { color: #22d3ee; background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.3); }
+.cat-circle[style*="4ade80"] { color: #4ade80; background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.3); }
+.cat-circle[style*="fbbf24"] { color: #fbbf24; background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); }
+.cat-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.cat-card p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; }
+.cat-card a { font-size: 0.82rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 6px; transition: gap 0.25s; }
+.cat-card:hover a { gap: 10px; }
+
+/* PROGRAMS */
+.programs { padding: 120px 0; background: rgba(108,99,255,0.03); }
+.prog-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 48px; }
+.flt-btn { padding: 10px 22px; border: 1.5px solid var(--border); border-radius: 50px; background: transparent; color: rgba(255,255,255,0.65); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+body.light-mode .flt-btn { color: rgba(0,0,0,0.6); }
+.flt-btn:hover, .flt-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.prog-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.35s; position: relative; }
+.prog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(108,99,255,0.3); }
+.prog-card.featured { border-color: rgba(108,99,255,0.5); box-shadow: 0 0 30px rgba(108,99,255,0.2); }
+.p-feat-bdg { position: absolute; top: 12px; left: 12px; z-index: 5; background: var(--grad); padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; color: white; }
+.prog-img { position: relative; overflow: hidden; }
+.prog-img img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s; }
+.prog-card:hover .prog-img img { transform: scale(1.07); }
+.prog-ov { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.8)); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 20px; opacity: 0; transition: opacity 0.3s; }
+.prog-card:hover .prog-ov { opacity: 1; }
+.ptag { background: rgba(108,99,255,0.85); padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; color: white; margin-bottom: 10px; }
+.pbook { padding: 8px 24px; background: white; border: none; border-radius: 8px; color: #1a1a2e; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.25s; }
+.pbook:hover { background: var(--primary); color: white; }
+.pdur { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; color: white; display: flex; align-items: center; gap: 5px; }
+.prog-body { padding: 20px; }
+.pdiff { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
+.pdiff.beg { background: rgba(74,222,128,0.2); color: #4ade80; }
+.pdiff.int { background: rgba(251,146,60,0.2); color: #fb923c; }
+.pdiff.adv { background: rgba(244,63,94,0.2); color: #f43f5e; }
+.prog-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.prog-body p { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+.pmeta { display: flex; gap: 16px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; flex-wrap: wrap; }
+.pmeta span { display: flex; align-items: center; gap: 4px; }
+.pmeta i { color: var(--primary); }
+.ptrainer { display: flex; align-items: center; gap: 10px; }
+.tav { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; flex-shrink: 0; }
+.ptrainer span { font-size: 0.83rem; font-weight: 600; }
+.prog-cta { text-align: center; margin-top: 48px; }
+.btn-prim-lg { display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; background: var(--primary); border-radius: 14px; color: white; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+.btn-prim-lg:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(108,99,255,0.5); }
+/* MEMBERSHIP */
+.membership { padding: 120px 0; position: relative; }
+.mem-bg { position: absolute; inset: 0; overflow: hidden; }
+.mem-orb { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(108,99,255,0.12), transparent 70%); border-radius: 50%; filter: blur(40px); }
+.toggle-wrap { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 60px; }
+.tgl-lbl { font-weight: 600; font-size: 0.95rem; }
+.tgl { position: relative; display: inline-block; width: 52px; height: 28px; cursor: pointer; }
+.tgl input { opacity: 0; width: 0; height: 0; }
+.tgl-sl { position: absolute; inset: 0; background: rgba(255,255,255,0.15); border-radius: 50px; transition: 0.35s; border: 1.5px solid var(--border); }
+.tgl-sl::before { content: ''; position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; top: 2px; left: 3px; transition: 0.35s; }
+.tgl input:checked + .tgl-sl { background: var(--primary); border-color: var(--primary); }
+.tgl input:checked + .tgl-sl::before { transform: translateX(24px); }
+.save-bdg { background: rgba(74,222,128,0.2); color: #4ade80; padding: 2px 8px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; position: relative; z-index: 1; }
+.price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; transition: all 0.35s; position: relative; }
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+.price-card.featured { background: linear-gradient(145deg, rgba(108,99,255,0.2), rgba(255,107,107,0.1)); border-color: rgba(108,99,255,0.5); transform: scale(1.03); }
+.price-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+.pc-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad); padding: 4px 20px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: white; white-space: nowrap; }
+.pc-hdr { text-align: center; margin-bottom: 24px; }
+.pc-ico { width: 60px; height: 60px; border-radius: 16px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem; color: var(--text-muted); }
+.pc-ico.pur { background: rgba(108,99,255,0.2); color: #8b85ff; }
+.pc-ico.gld { background: rgba(251,191,36,0.2); color: #fbbf24; }
+.pc-hdr h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+.pc-hdr p { font-size: 0.83rem; color: var(--text-muted); }
+.pc-amt { text-align: center; margin-bottom: 28px; }
+.pcurr { font-size: 1.2rem; font-weight: 700; }
+.pamt { font-size: 3rem; font-weight: 900; font-family: 'Manrope', sans-serif; }
+.pper { font-size: 0.85rem; color: var(--text-muted); }
+.pc-feats { margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+.pc-feats li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; }
+.pc-feats li i { width: 18px; text-align: center; }
+.pc-feats li i.fa-check { color: #4ade80; }
+.pc-feats li i.fa-times { color: rgba(255,255,255,0.3); }
+.pc-feats li.dis { opacity: 0.4; }
+.btn-pc-out { display: block; text-align: center; padding: 14px; border: 1.5px solid rgba(108,99,255,0.5); border-radius: 12px; color: var(--primary); font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+.btn-pc-out:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.btn-pc-pri { display: block; text-align: center; padding: 14px; background: var(--primary); border-radius: 12px; color: white; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+.btn-pc-pri:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(108,99,255,0.5); }
+.mem-note { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 48px; color: var(--text-muted); font-size: 0.88rem; }
+.mem-note i { color: #4ade80; }
+.mem-note strong { color: white; }
+body.light-mode .mem-note strong { color: #1a1a2e; }
+
+/* AMBASSADOR */
+.ambassador { padding: 120px 0; position: relative; overflow: hidden; }
+.amb-bg { position: absolute; inset: 0; }
+.amb-grd { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(108,99,255,0.05) 0%, rgba(255,107,107,0.05) 100%); }
+.amb-body { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.amb-frame { position: relative; }
+.amb-img-glow { position: absolute; inset: -20px; background: radial-gradient(circle, rgba(108,99,255,0.25), transparent 70%); border-radius: 50%; filter: blur(30px); }
+.amb-img { width: 100%; height: 560px; object-fit: cover; object-position: center top; border-radius: 28px; position: relative; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+.amb-float-bdg { position: absolute; bottom: 24px; left: 24px; z-index: 2; background: rgba(20,22,40,0.9); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; }
+.amb-float-bdg i { color: #fbbf24; }
+.amb-sport { display: inline-block; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.35); color: #8b85ff; padding: 6px 16px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.amb-name { font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 8px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.amb-title { font-size: 1rem; color: var(--text-muted); margin-bottom: 24px; }
+.amb-quote { border-left: 4px solid var(--primary); padding-left: 20px; font-style: italic; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 36px; }
+body.light-mode .amb-quote { color: rgba(0,0,0,0.75); }
+.amb-ach { display: flex; gap: 32px; margin-bottom: 36px; }
+.ach { display: flex; align-items: center; gap: 12px; }
+.ach-ico { width: 44px; height: 44px; background: rgba(108,99,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #8b85ff; font-size: 1.1rem; }
+.ach h4 { font-size: 1.8rem; font-weight: 900; font-family: 'Manrope', sans-serif; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.ach p { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+.amb-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-prim-std { padding: 14px 28px; background: var(--primary); border-radius: 12px; color: white; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+.btn-prim-std:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(108,99,255,0.5); }
+.btn-ghost-std { padding: 14px 24px; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 12px; color: inherit; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
+.btn-ghost-std:hover { background: rgba(255,255,255,0.12); }
+
+/* CULT CARE */
+.cult-care { padding: 120px 0; background: rgba(108,99,255,0.03); }
+.care-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.care-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 28px; transition: all 0.35s; }
+.care-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(108,99,255,0.3); }
+.care-ico { width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; transition: transform 0.3s; }
+.care-card:hover .care-ico { transform: scale(1.1); }
+.care-ico.red { background: rgba(244,63,94,0.15); color: #f43f5e; }
+.care-ico.blue { background: rgba(56,189,248,0.15); color: #38bdf8; }
+.care-ico.green { background: rgba(74,222,128,0.15); color: #4ade80; }
+.care-ico.purple { background: rgba(108,99,255,0.15); color: #8b85ff; }
+.care-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.care-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.care-stat-pill { display: inline-block; background: rgba(255,255,255,0.07); border: 1px solid var(--border); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+.care-link { font-size: 0.85rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 6px; transition: gap 0.25s; }
+.care-link:hover { gap: 10px; }
+/* TESTIMONIALS */
+.testimonials { padding: 120px 0; }
+.testi-wrap { position: relative; overflow: hidden; }
+.testi-track { display: flex; gap: 28px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.tcard { background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); border-radius: var(--radius); padding: 36px; min-width: calc(33.333% - 20px); flex-shrink: 0; transition: transform 0.35s; }
+.tcard:hover { transform: translateY(-4px); }
+.tstars { display: flex; gap: 4px; color: #fbbf24; margin-bottom: 16px; font-size: 0.95rem; }
+.tcard p { font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 24px; font-style: italic; }
+body.light-mode .tcard p { color: rgba(0,0,0,0.75); }
+.tauth { display: flex; align-items: center; gap: 12px; }
+.tav { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; color: white; flex-shrink: 0; }
+.tauth h4 { font-size: 0.95rem; font-weight: 700; }
+.tauth p { font-size: 0.78rem; color: var(--text-muted); }
+.ttransf { margin-left: auto; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; color: #8b85ff; white-space: nowrap; }
+.car-ctrl { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 36px; }
+.car-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--glass); backdrop-filter: blur(10px); color: inherit; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+.car-btn:hover { background: var(--primary); border-color: var(--primary); color: white; }
+.dots { display: flex; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.25s; }
+.dot.active { width: 24px; border-radius: 4px; background: var(--primary); }
+
+/* CULT STORE */
+.cult-store { padding: 120px 0; background: rgba(108,99,255,0.03); }
+.store-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.scard { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.35s; cursor: pointer; }
+.scard:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(108,99,255,0.3); }
+.simg-wrap { position: relative; }
+.simg-bg { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: rgba(255,255,255,0.25); }
+.sbdg { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; background: rgba(108,99,255,0.9); color: white; }
+.sbdg.best { background: rgba(251,191,36,0.9); color: #1a1a2e; }
+.sinfo { padding: 20px; }
+.sinfo h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.sinfo p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; }
+.sprice { display: flex; align-items: center; gap: 10px; }
+.scur { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
+.sorig { font-size: 0.85rem; color: var(--text-muted); text-decoration: line-through; }
+.store-cta { text-align: center; margin-top: 48px; }
+
+/* STATS */
+.stats-sec { padding: 100px 0; position: relative; overflow: hidden; }
+.stats-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(108,99,255,0.1) 0%, rgba(255,107,107,0.08) 100%); }
+.sorb-1, .sorb-2 { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.3; }
+.sorb-1 { width: 400px; height: 400px; background: radial-gradient(circle, #6c63ff, transparent); top: -20%; left: -10%; }
+.sorb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #ff6b6b, transparent); bottom: -20%; right: -10%; }
+.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; position: relative; z-index: 1; text-align: center; }
+.sitem { padding: 32px 20px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); backdrop-filter: blur(16px); transition: transform 0.35s; }
+.sitem:hover { transform: translateY(-4px); }
+.sico { width: 56px; height: 56px; background: rgba(108,99,255,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.3rem; color: #8b85ff; }
+.snum { font-size: 2.2rem; font-weight: 900; font-family: 'Manrope', sans-serif; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+.sitem p { font-size: 0.83rem; color: var(--text-muted); font-weight: 500; }
+
+/* APP SECTION */
+.app-sec { padding: 120px 0; }
+.app-body { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.app-left h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; margin: 16px 0; }
+.app-desc { color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; font-size: 1rem; }
+.app-feats { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
+.af { display: flex; gap: 16px; align-items: flex-start; }
+.af-ico { width: 44px; height: 44px; flex-shrink: 0; background: rgba(108,99,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #8b85ff; }
+.af h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.af p { font-size: 0.82rem; color: var(--text-muted); }
+.dl-lbl { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.app-btns { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.app-btn { display: flex; align-items: center; gap: 14px; padding: 12px 20px; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 14px; color: inherit; transition: all 0.3s; }
+.app-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+.app-btn div { display: flex; flex-direction: column; }
+.app-btn div span:first-child { font-size: 0.68rem; color: rgba(255,255,255,0.7); }
+.app-btn div strong { font-size: 0.95rem; font-weight: 700; }
+.qr-sec { display: flex; align-items: center; gap: 16px; }
+.qr-box { width: 72px; height: 72px; border: 2px solid var(--border); border-radius: 12px; padding: 8px; }
+.qr-inner { width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(108,99,255,0.3) 0px, rgba(108,99,255,0.3) 2px, transparent 2px, transparent 6px), repeating-linear-gradient(90deg, rgba(108,99,255,0.3) 0px, rgba(108,99,255,0.3) 2px, transparent 2px, transparent 6px); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.qr-inner strong { font-size: 1.2rem; font-weight: 900; color: var(--primary); background: rgba(13,15,26,0.8); padding: 2px 6px; border-radius: 4px; }
+.qr-sec p { font-size: 0.8rem; color: var(--text-muted); }
+/* Phone Mockup */
+.phone-wrap { position: relative; display: flex; justify-content: center; }
+.phone-glow { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(108,99,255,0.3), transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(40px); border-radius: 50%; }
+.phone-mock { width: 280px; height: 580px; background: rgba(20,22,40,0.97); border: 2px solid rgba(255,255,255,0.15); border-radius: 40px; overflow: hidden; position: relative; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.6); }
+.phone-screen { padding: 16px; height: 100%; }
+.pbar { display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 16px; }
+.pbar div { display: flex; gap: 4px; align-items: center; }
+.pcont { display: flex; flex-direction: column; gap: 14px; }
+.phdr { display: flex; justify-content: space-between; align-items: center; }
+.phdr span { font-size: 0.8rem; font-weight: 600; }
+.pav { width: 32px; height: 32px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
+.pring-card { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 14px; }
+.rsvg { width: 80px; height: 80px; }
+.rbg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 3.5; }
+.rfill { fill: none; stroke: url(#grad1); stroke-width: 3.5; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+.rtxt { font-size: 0.5rem; font-weight: 900; text-anchor: middle; fill: white; font-family: 'Poppins', sans-serif; }
+.pring-card h4 { font-size: 0.78rem; font-weight: 700; margin-bottom: 2px; }
+.pring-card p { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+.ontrack { font-size: 0.65rem; background: rgba(74,222,128,0.2); color: #4ade80; padding: 2px 8px; border-radius: 50px; font-weight: 700; }
+.pclasses h5 { font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
+.pcls { background: rgba(255,255,255,0.06); border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.pcdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.pcls div { flex: 1; }
+.pcls div span { display: block; font-size: 0.72rem; }
+.pcls div span:last-child { color: var(--text-muted); font-size: 0.65rem; }
+.pcls button { background: var(--primary); border: none; border-radius: 8px; color: white; font-size: 0.65rem; font-weight: 700; padding: 5px 10px; cursor: pointer; }
+/* BLOG */
+.blog { padding: 120px 0; background: rgba(108,99,255,0.03); }
+.blog-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 28px; }
+.bcard { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.35s; }
+.bcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(108,99,255,0.3); }
+.bimg-wrap { position: relative; overflow: hidden; }
+.bimg-wrap img { width: 100%; height: 260px; object-fit: cover; transition: transform 0.5s; }
+.bimg-wrap.sm img { height: 180px; }
+.bcard:hover .bimg-wrap img { transform: scale(1.07); }
+.bcat { position: absolute; top: 12px; left: 12px; background: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; color: white; }
+.binfo { padding: 24px; }
+.bmeta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.binfo h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+.binfo p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.brm { font-size: 0.85rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 6px; transition: gap 0.25s; }
+.brm:hover { gap: 10px; }
+.blog-cta { text-align: center; margin-top: 48px; }
+.btn-out-std { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border: 1.5px solid rgba(108,99,255,0.5); border-radius: 12px; color: var(--primary); font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+.btn-out-std:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+
+/* FAQ */
+.faq { padding: 120px 0; }
+.faq-grid { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.fitem { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; transition: border-color 0.3s; }
+.fitem.active { border-color: rgba(108,99,255,0.4); }
+.fq { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: transparent; border: none; color: inherit; font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: left; transition: background 0.25s; }
+.fq:hover { background: rgba(255,255,255,0.04); }
+.fi { color: var(--primary); font-size: 0.85rem; flex-shrink: 0; transition: transform 0.3s; }
+.fitem.active .fi { transform: rotate(45deg); }
+.fa-ans { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.fa-ans p { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+.fitem.active .fa-ans { max-height: 200px; }
+
+/* CONTACT */
+.contact { padding: 120px 0; background: rgba(108,99,255,0.03); }
+.contact-body { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+.cleft h2 { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; margin: 16px 0; }
+.cleft p { color: var(--text-muted); margin-bottom: 32px; line-height: 1.7; }
+.cinfo { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
+.ci { display: flex; align-items: flex-start; gap: 14px; }
+.ci-ico { width: 44px; height: 44px; flex-shrink: 0; background: rgba(108,99,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #8b85ff; font-size: 1rem; }
+.ci h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 2px; }
+.ci p { font-size: 0.83rem; color: var(--text-muted); }
+.csocial { display: flex; gap: 10px; }
+.csoc { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s; border: 1.5px solid var(--border); color: var(--text-muted); }
+.csoc:hover { transform: translateY(-3px); color: white; }
+.csoc.insta:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
+.csoc.fb:hover { background: #1877f2; border-color: transparent; }
+.csoc.tw:hover { background: #1da1f2; border-color: transparent; }
+.csoc.yt:hover { background: #ff0000; border-color: transparent; }
+.cform { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fgrp { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.fgrp label { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+body.light-mode .fgrp label { color: rgba(0,0,0,0.75); }
+.fgrp input, .fgrp select, .fgrp textarea { background: rgba(255,255,255,0.06); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 16px; color: inherit; font-family: 'Poppins', sans-serif; font-size: 0.88rem; transition: border-color 0.25s; outline: none; }
+body.light-mode .fgrp input, body.light-mode .fgrp select, body.light-mode .fgrp textarea { background: rgba(0,0,0,0.04); }
+.fgrp input::placeholder, .fgrp textarea::placeholder { color: var(--text-muted); }
+.fgrp input:focus, .fgrp select:focus, .fgrp textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(108,99,255,0.2); }
+.fgrp select { cursor: pointer; }
+.fgrp select option { background: #1a1c2e; }
+.btn-prim-full { width: 100%; padding: 14px; background: var(--primary); border: none; border-radius: 12px; color: white; font-size: 1rem; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.btn-prim-full:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(108,99,255,0.5); }
+
+/* FOOTER */
+.footer { background: rgba(8,10,20,1); }
+.nl-band { padding: 60px 0; border-bottom: 1px solid var(--border); }
+.nl-wrap { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.nl-txt h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+.nl-txt p { font-size: 0.88rem; color: var(--text-muted); }
+.nlform { display: flex; gap: 12px; }
+.nlform input { background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 20px; color: inherit; font-family: 'Poppins', sans-serif; font-size: 0.88rem; outline: none; width: 280px; }
+.nlform input::placeholder { color: var(--text-muted); }
+.nlform input:focus { border-color: var(--primary); }
+.nlform button { padding: 12px 24px; background: var(--primary); border: none; border-radius: 12px; color: white; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+.nlform button:hover { background: var(--primary-dark); }
+.footer-main { padding: 80px 0 48px; }
+.fgrid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; }
+.fbrand { padding-right: 20px; }
+.flogo { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; display: inline-block; margin-bottom: 16px; }
+.flogo .lc { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.flogo .ld { color: #6c63ff; }
+.fbrand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.fsocial { display: flex; gap: 10px; margin-bottom: 24px; }
+.fsocial a { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--text-muted); transition: all 0.3s; }
+.fsocial a:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-2px); }
+.fapps { display: flex; flex-direction: column; gap: 8px; }
+.fapps a { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid var(--border); border-radius: 10px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; transition: all 0.25s; }
+.fapps a:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
+.fcol h4 { font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+body.light-mode .fcol h4 { color: #1a1a2e; }
+.fcol ul { display: flex; flex-direction: column; gap: 10px; }
+.fcol ul li a { font-size: 0.83rem; color: var(--text-muted); transition: all 0.25s; }
+.fcol ul li a:hover { color: white; padding-left: 4px; }
+body.light-mode .fcol ul li a:hover { color: #1a1a2e; }
+.footer-btm { border-top: 1px solid var(--border); padding: 24px 0; }
+.fbtm-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 12px; }
+.fbtm-row p { font-size: 0.82rem; color: var(--text-muted); }
+.flegal { display: flex; gap: 20px; flex-wrap: wrap; }
+.flegal a { font-size: 0.78rem; color: var(--text-muted); transition: color 0.25s; }
+.flegal a:hover { color: white; }
+body.light-mode .flegal a:hover { color: #1a1a2e; }
+.fdisclaim { font-size: 0.72rem; color: rgba(255,255,255,0.3); font-style: italic; text-align: center; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .fgrid { grid-template-columns: 1fr 1fr 1fr; }
+  .fbrand { grid-column: 1 / -1; }
+  .cat-grid { grid-template-columns: repeat(4, 1fr); }
+  .care-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .store-grid { grid-template-columns: repeat(2, 1fr); }
+  .tcard { min-width: calc(50% - 14px); }
+}
+@media (max-width: 768px) {
+  .nav-links, .loc-badge, .btn-nav-out { display: none; }
+  .ham-btn { display: flex; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(13,15,26,0.97); padding: 80px 24px 24px; gap: 8px; z-index: 999; overflow-y: auto; }
+  body.light-mode .nav-links.open { background: rgba(245,247,255,0.97); }
+  .nav-drop .drop-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(255,255,255,0.05); border: none; border-left: 2px solid var(--primary); border-radius: 0; margin-left: 16px; }
+  .hero-body { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-vis { display: none; }
+  .hstats { justify-content: center; flex-wrap: wrap; }
+  .hero-ctas { justify-content: center; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .prog-grid { grid-template-columns: 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: scale(1); }
+  .amb-body { grid-template-columns: 1fr; }
+  .amb-left { display: none; }
+  .care-grid { grid-template-columns: 1fr; }
+  .tcard { min-width: 100%; }
+  .store-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .app-body { grid-template-columns: 1fr; }
+  .app-right { display: none; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .contact-body { grid-template-columns: 1fr; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+  .nl-wrap { flex-direction: column; text-align: center; }
+  .nlform { flex-direction: column; }
+  .nlform input { width: 100%; }
+  .fgrid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .fbtm-row { flex-direction: column; text-align: center; }
+  .fc1, .fc2, .fc3 { display: none; }
+}
+@media (max-width: 480px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .store-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .fgrid { grid-template-columns: 1fr; }
+  .amb-ach { flex-direction: column; gap: 16px; }
+  .hero-text h1 { font-size: 2.2rem; }
+}
+/* Scroll animation classes */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-left.visible { opacity: 1; transform: translateX(0); }
+.fade-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-right.visible { opacity: 1; transform: translateX(0); }
+.zoom-in { opacity: 0; transform: scale(0.9); transition: opacity 0.6s ease, transform 0.6s ease; }
+.zoom-in.visible { opacity: 1; transform: scale(1); }
+/* Prog card hidden filter */
+.prog-card.hidden { display: none; }
+/* Drop menu center fix */
+.drop-menu { transform: translateX(-50%) translateY(8px); left: 50%; }
+.nav-drop:hover .drop-menu { transform: translateX(-50%) translateY(0); }
+
+</style>
+</head>
+
+<body class="dark-mode" id="body">
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-logo"><span class="lc">C</span>ult<span class="ld">.</span>fit</div>
+      <div class="loader-bar">
+        <div class="loader-bar-fill"></div>
+      </div>
+      <p>Loading your fitness journey...</p>
+    </div>
+  </div>
+  <!-- BACK TO TOP -->
+  <button id="btt" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+  <!-- FAB -->
+  <div class="fab-wrap">
+    <button class="fab-main" id="fabMain"><i class="fas fa-bolt"></i></button>
+    <div class="fab-menu" id="fabMenu">
+      <a href="#membership" class="fab-item" title="Join Now"><i class="fas fa-star"></i></a>
+      <a href="#programs" class="fab-item" title="Programs"><i class="fas fa-dumbbell"></i></a>
+      <a href="#app" class="fab-item" title="Get App"><i class="fas fa-mobile-alt"></i></a>
+      <a href="#contact" class="fab-item" title="Contact"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><span class="lc">C</span>ult<span class="ld">.</span>fit</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <div class="nav-drop">
+          <a href="#programs" class="nav-link">FITNESS <i class="fas fa-chevron-down fa-xs"></i></a>
+          <div class="drop-menu">
+            <a href="#programs" class="drop-item"><i class="fas fa-running"></i> Group Classes</a>
+            <a href="#programs" class="drop-item"><i class="fas fa-dumbbell"></i> Gym Sessions</a>
+            <a href="#programs" class="drop-item"><i class="fas fa-spa"></i> Yoga</a>
+            <a href="#programs" class="drop-item"><i class="fas fa-heartbeat"></i> Cardio & HIIT</a>
+            <a href="#programs" class="drop-item"><i class="fas fa-fist-raised"></i> Combat</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <a href="#categories" class="nav-link">SPORTS <i class="fas fa-chevron-down fa-xs"></i></a>
+          <div class="drop-menu">
+            <a href="#categories" class="drop-item"><i class="fas fa-swimmer"></i> Swimming</a>
+            <a href="#categories" class="drop-item"><i class="fas fa-table-tennis"></i> Badminton</a>
+            <a href="#categories" class="drop-item"><i class="fas fa-futbol"></i> Football</a>
+            <a href="#categories" class="drop-item"><i class="fas fa-cricket"></i> Cricket</a>
+            <a href="#categories" class="drop-item"><i class="fas fa-th-large"></i> Squash</a>
+          </div>
+        </div>
+        <a href="#membership" class="nav-link">MEMBERSHIP</a>
+        <a href="#care" class="nav-link">CULT CARE</a>
+        <a href="#store" class="nav-link">STORE</a>
+        <a href="#blog" class="nav-link">BLOG</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"
+            id="themeIcon"></i></button>
+        <button class="search-btn" id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+        <div class="loc-badge"><i class="fas fa-map-marker-alt"></i><span>Kolkata</span></div>
+        <a href="login.html" class="btn-nav-out">Login</a>
+        <a href="#" class="btn-nav-pri">Get App</a>
+        <button class="ham-btn" id="hamBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="search-ov" id="searchOv">
+      <div class="search-inner">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search workouts, trainers, classes..." id="searchInput" />
+        <button id="closeSearch"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="search-tags">
+        <span>Yoga</span><span>HIIT</span><span>Swimming</span><span>Zumba</span><span>Strength</span><span>Badminton</span>
+      </div>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <div class="hero-badge"><i class="fas fa-fire"></i><span>India's #1 Fitness Platform</span></div>
+        <h1>A Fitness<br /><span class="grad">Movement</span><br />Worth Breaking<br /><span class="accent">A Sweat
+            For</span></h1>
+        <p>Join 5M+ members across 400+ centres in 40+ cities. Unlimited gym, group classes, yoga, sports and more in
+          one CultPass.</p>
+        <div class="hero-ctas">
+          <a href="#membership" class="btn-hp">Explore CultPass <i class="fas fa-arrow-right"></i></a>
+          <a href="#programs" class="btn-hs"><i class="fas fa-play-circle"></i> Watch Demo</a>
+        </div>
+        <div class="hstats">
+          <div class="hstat"><span class="hnum" data-count="5">0</span><span class="hunit">M+</span>
+            <p>Members</p>
+          </div>
+          <div class="hdiv"></div>
+          <div class="hstat"><span class="hnum" data-count="400">0</span><span class="hunit">+</span>
+            <p>Centres</p>
+          </div>
+          <div class="hdiv"></div>
+          <div class="hstat"><span class="hnum" data-count="40">0</span><span class="hunit">+</span>
+            <p>Cities</p>
+          </div>
+          <div class="hdiv"></div>
+          <div class="hstat"><span class="hnum" data-count="200">0</span><span class="hunit">+</span>
+            <p>Workouts</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-vis">
+        <div class="hero-img-box">
+          <div class="img-bg-glow"></div>
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80"
+            alt="Premium Fitness at cult.fit" class="hero-img" />
+          <div class="float-card fc1">
+            <div class="fci orange"><i class="fas fa-fire"></i></div>
+            <div>
+              <p class="fv">850 kcal</p>
+              <p class="fl">Burned Today</p>
+            </div>
+          </div>
+          <div class="float-card fc2">
+            <div class="fci green"><i class="fas fa-users"></i></div>
+            <div>
+              <p class="fv">48 People</p>
+              <p class="fl">Active Now</p>
+            </div>
+          </div>
+          <div class="float-card fc3">
+            <div class="fci purple"><i class="fas fa-trophy"></i></div>
+            <div>
+              <p class="fv">Level 12</p>
+              <p class="fl">Fitness Pro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll Down</span>
+      <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="sec-hdr">
+        <span class="sec-badge">What We Offer</span>
+        <h2>Your Fitness, <span class="grad">Your Way</span></h2>
+        <p>From group classes to individual sports, discover the perfect workout</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#ff6b6b"><i class="fas fa-dumbbell"></i></div>
+          <h3>Gym</h3>
+          <p>State-of-the-art equipment</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#a78bfa"><i class="fas fa-spa"></i></div>
+          <h3>Yoga</h3>
+          <p>Mind-body balance</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#38bdf8"><i class="fas fa-swimmer"></i></div>
+          <h3>Swimming</h3>
+          <p>Olympic-sized pools</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#fb923c"><i class="fas fa-music"></i></div>
+          <h3>Zumba</h3>
+          <p>Dance your way fit</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#f43f5e"><i class="fas fa-fist-raised"></i></div>
+          <h3>Boxing</h3>
+          <p>Combat and strength</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#22d3ee"><i class="fas fa-table-tennis"></i></div>
+          <h3>Badminton</h3>
+          <p>Indoor court sport</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#4ade80"><i class="fas fa-bicycle"></i></div>
+          <h3>Cycling</h3>
+          <p>High-intensity rides</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-circle" style="--cc:#fbbf24"><i class="fas fa-bolt"></i></div>
+          <h3>HIIT</h3>
+          <p>High intensity intervals</p><a href="#">Explore <i class="fas fa-arrow-right fa-xs"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <div class="container">
+      <div class="sec-hdr">
+        <span class="sec-badge">Programs</span>
+        <h2>Explore Our <span class="grad">Programs</span></h2>
+        <p>Curated fitness programs led by expert trainers for every level</p>
+      </div>
+      <div class="prog-filter">
+        <button class="flt-btn active" data-f="all">All Programs</button>
+        <button class="flt-btn" data-f="group">Group Classes</button>
+        <button class="flt-btn" data-f="yoga">Yoga</button>
+        <button class="flt-btn" data-f="combat">Combat</button>
+        <button class="flt-btn" data-f="cardio">Cardio</button>
+        <button class="flt-btn" data-f="strength">Strength</button>
+      </div>
+      <div class="prog-grid" id="progGrid">
+        <div class="prog-card" data-t="group">
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80"
+              alt="Zumba" />
+            <div class="prog-ov"><span class="ptag">Group</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 60 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff beg">Beginner</div>
+            <h3>Zumba Dance Fitness</h3>
+            <p>High-energy dance workout combining Latin rhythms</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 400 kcal</span><span><i class="fas fa-users"></i>
+                20</span><span><i class="fas fa-star"></i> 4.9</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#ff6b6b,#ffd93d)">P</div><span>Priya
+                Sharma</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card featured" data-t="strength">
+          <div class="p-feat-bdg">Most Popular</div>
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80"
+              alt="Strength" />
+            <div class="prog-ov"><span class="ptag">Strength</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 75 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff adv">Advanced</div>
+            <h3>Power Lifting Pro</h3>
+            <p>Build raw strength with expert coaching</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 600 kcal</span><span><i class="fas fa-users"></i>
+                12</span><span><i class="fas fa-star"></i> 4.8</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#6c63ff,#3ecfcf)">R</div><span>Rahul
+                Kapoor</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card" data-t="yoga">
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80"
+              alt="Yoga" />
+            <div class="prog-ov"><span class="ptag">Yoga</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 60 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff beg">Beginner</div>
+            <h3>Morning Flow Yoga</h3>
+            <p>Start your day with energizing sun salutations</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 200 kcal</span><span><i class="fas fa-users"></i>
+                15</span><span><i class="fas fa-star"></i> 4.9</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#f093fb,#f5576c)">A</div><span>Anjali
+                Menon</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card" data-t="cardio">
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80"
+              alt="HIIT" />
+            <div class="prog-ov"><span class="ptag">Cardio</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 45 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff int">Intermediate</div>
+            <h3>HIIT Blast</h3>
+            <p>Burn maximum calories in minimum time</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 500 kcal</span><span><i class="fas fa-users"></i>
+                18</span><span><i class="fas fa-star"></i> 4.7</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">V</div><span>Vikram
+                Nair</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card" data-t="combat">
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80"
+              alt="Boxing" />
+            <div class="prog-ov"><span class="ptag">Combat</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 60 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff int">Intermediate</div>
+            <h3>Boxing Fundamentals</h3>
+            <p>Learn boxing with intense full-body training</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 550 kcal</span><span><i class="fas fa-users"></i>
+                10</span><span><i class="fas fa-star"></i> 4.8</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#fa709a,#fee140)">S</div><span>Sanjay
+                Gupta</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card" data-t="group">
+          <div class="prog-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80"
+              alt="Pilates" />
+            <div class="prog-ov"><span class="ptag">Group</span><button class="pbook">Book Now</button></div>
+            <div class="pdur"><i class="fas fa-clock"></i> 55 min</div>
+          </div>
+          <div class="prog-body">
+            <div class="pdiff beg">Beginner</div>
+            <h3>Core and Pilates</h3>
+            <p>Strengthen your core and improve posture</p>
+            <div class="pmeta"><span><i class="fas fa-fire-alt"></i> 300 kcal</span><span><i class="fas fa-users"></i>
+                12</span><span><i class="fas fa-star"></i> 4.9</span></div>
+            <div class="ptrainer">
+              <div class="tav" style="background:linear-gradient(135deg,#a8edea,#fed6e3)">N</div><span>Neha Rathi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-cta"><a href="#" class="btn-prim-lg">View All Programs <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+  <!-- MEMBERSHIP -->
+  <section class="membership" id="membership">
+    <div class="mem-bg">
+      <div class="mem-orb"></div>
+    </div>
+    <div class="container">
+      <div class="sec-hdr">
+        <span class="sec-badge">Pricing</span>
+        <h2>Choose Your <span class="grad">CultPass</span></h2>
+        <p>Flexible membership plans to fit your schedule, goals, and budget</p>
+      </div>
+      <div class="toggle-wrap">
+        <span class="tgl-lbl">Monthly</span>
+        <label class="tgl"><input type="checkbox" id="billingToggle" /><span class="tgl-sl"></span></label>
+        <span class="tgl-lbl">Yearly <span class="save-bdg">Save 30%</span></span>
+      </div>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="pc-hdr">
+            <div class="pc-ico"><i class="fas fa-seedling"></i></div>
+            <h3>CultPass Lite</h3>
+            <p>Perfect for beginners</p>
+          </div>
+          <div class="pc-amt"><span class="pcurr">Rs.</span><span class="pamt" data-m="999" data-y="699">999</span><span
+              class="pper">/mo</span></div>
+          <ul class="pc-feats">
+            <li><i class="fas fa-check"></i> Access to 1 Centre</li>
+            <li><i class="fas fa-check"></i> Gym Sessions Unlimited</li>
+            <li><i class="fas fa-check"></i> 5 Group Classes/month</li>
+            <li><i class="fas fa-check"></i> Fitness Assessment</li>
+            <li class="dis"><i class="fas fa-times"></i> Sports Access</li>
+            <li class="dis"><i class="fas fa-times"></i> Yoga Classes</li>
+            <li class="dis"><i class="fas fa-times"></i> Priority Booking</li>
+          </ul>
+          <a href="#" class="btn-pc-out">Get Started</a>
+        </div>
+        <div class="price-card featured">
+          <div class="pc-pop">Most Popular</div>
+          <div class="pc-hdr">
+            <div class="pc-ico pur"><i class="fas fa-rocket"></i></div>
+            <h3>CultPass Pro</h3>
+            <p>For fitness enthusiasts</p>
+          </div>
+          <div class="pc-amt"><span class="pcurr">Rs.</span><span class="pamt" data-m="1999"
+              data-y="1399">1999</span><span class="pper">/mo</span></div>
+          <ul class="pc-feats">
+            <li><i class="fas fa-check"></i> Access to All Centres</li>
+            <li><i class="fas fa-check"></i> Gym Sessions Unlimited</li>
+            <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
+            <li><i class="fas fa-check"></i> Yoga - 10 sessions/mo</li>
+            <li><i class="fas fa-check"></i> Sports - 5 sessions/mo</li>
+            <li><i class="fas fa-check"></i> Fitness Assessment</li>
+            <li class="dis"><i class="fas fa-times"></i> Priority Booking</li>
+          </ul>
+          <a href="#" class="btn-pc-pri">Get Started</a>
+        </div>
+        <div class="price-card">
+          <div class="pc-hdr">
+            <div class="pc-ico gld"><i class="fas fa-crown"></i></div>
+            <h3>CultPass Elite</h3>
+            <p>Ultimate experience</p>
+          </div>
+          <div class="pc-amt"><span class="pcurr">Rs.</span><span class="pamt" data-m="2999"
+              data-y="2099">2999</span><span class="pper">/mo</span></div>
+          <ul class="pc-feats">
+            <li><i class="fas fa-check"></i> Pan-India Centre Access</li>
+            <li><i class="fas fa-check"></i> Gym Sessions Unlimited</li>
+            <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
+            <li><i class="fas fa-check"></i> Unlimited Yoga</li>
+            <li><i class="fas fa-check"></i> Unlimited Sports</li>
+            <li><i class="fas fa-check"></i> Assessment + Diet Plan</li>
+            <li><i class="fas fa-check"></i> Priority Booking</li>
+          </ul>
+          <a href="#" class="btn-pc-out">Get Started</a>
+        </div>
+      </div>
+      <div class="mem-note"><i class="fas fa-shield-alt"></i><span>All plans include a <strong>7-day free
+            trial</strong>. No credit card required. Cancel anytime.</span></div>
+    </div>
+  </section>
+
+  <!-- AMBASSADOR -->
+  <section class="ambassador" id="ambassador">
+    <div class="amb-bg">
+      <div class="amb-grd"></div>
+    </div>
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">Brand Ambassador</span>
+        <h2>Champion of <span class="grad">Fitness</span></h2>
+      </div>
+      <div class="amb-body">
+        <div class="amb-left">
+          <div class="amb-frame">
+            <div class="amb-img-glow"></div>
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80"
+              alt="P.V. Sindhu Brand Ambassador" class="amb-img" />
+            <div class="amb-float-bdg"><i class="fas fa-medal"></i><span>Olympic Medallist</span></div>
+          </div>
+        </div>
+        <div class="amb-right">
+          <div class="amb-sport">Badminton Legend</div>
+          <h2 class="amb-name">P.V. Sindhu</h2>
+          <p class="amb-title">cult.fit Brand Ambassador and Olympic Silver Medallist</p>
+          <blockquote class="amb-quote">"Fitness is not just about your body — it is about your mind, your discipline,
+            and your will to push beyond limits. cult.fit gives everyone access to that same dedication."</blockquote>
+          <div class="amb-ach">
+            <div class="ach">
+              <div class="ach-ico"><i class="fas fa-medal"></i></div>
+              <div>
+                <h4 class="ach-num" data-count="2">0</h4>
+                <p>Olympic Medals</p>
+              </div>
+            </div>
+            <div class="ach">
+              <div class="ach-ico"><i class="fas fa-trophy"></i></div>
+              <div>
+                <h4 class="ach-num" data-count="5">0</h4>
+                <p>World Championships</p>
+              </div>
+            </div>
+            <div class="ach">
+              <div class="ach-ico"><i class="fas fa-star"></i></div>
+              <div>
+                <h4 class="ach-num" data-count="24">0</h4>
+                <p>BWF Titles</p>
+              </div>
+            </div>
+          </div>
+          <div class="amb-ctas">
+            <a href="#programs" class="btn-prim-std">Train Like Sindhu</a>
+            <a href="#" class="btn-ghost-std">Her Story <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULT CARE -->
+  <section class="cult-care" id="care">
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">Cult Care</span>
+        <h2>Holistic <span class="grad">Wellness</span> Care</h2>
+        <p>Your health beyond fitness. Expert doctors, physio, mental health, and nutrition.</p>
+      </div>
+      <div class="care-grid">
+        <div class="care-card">
+          <div class="care-ico red"><i class="fas fa-user-md"></i></div>
+          <h3>Doctor Consultation</h3>
+          <p>Consult verified doctors online or in-person</p>
+          <div class="care-stat-pill">500+ Doctors</div><a href="#" class="care-link">Book Now <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="care-card">
+          <div class="care-ico blue"><i class="fas fa-brain"></i></div>
+          <h3>Mental Wellness</h3>
+          <p>Certified therapists for mental health support</p>
+          <div class="care-stat-pill">200+ Therapists</div><a href="#" class="care-link">Start Now <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="care-card">
+          <div class="care-ico green"><i class="fas fa-apple-alt"></i></div>
+          <h3>Nutrition and Diet</h3>
+          <p>Personalized plans by certified nutritionists</p>
+          <div class="care-stat-pill">Expert Plans</div><a href="#" class="care-link">Plan My Diet <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="care-card">
+          <div class="care-ico purple"><i class="fas fa-hands"></i></div>
+          <h3>Physiotherapy</h3>
+          <p>Injury rehabilitation and recovery programs</p>
+          <div class="care-stat-pill">300+ Physios</div><a href="#" class="care-link">Book Session <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">Testimonials</span>
+        <h2>Real <span class="grad">Transformations</span></h2>
+        <p>Hear from our community of 5M+ members who changed their lives</p>
+      </div>
+      <div class="testi-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="tcard">
+            <div class="tstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Lost 18 kg in 6 months! The trainers are incredibly motivating and the variety of classes keeps things
+              exciting. cult.fit changed my life."</p>
+            <div class="tauth">
+              <div class="tav" style="background:linear-gradient(135deg,#ff6b6b,#ffd93d)">A</div>
+              <div>
+                <h4>Arjun Sharma</h4>
+                <p>Software Engineer, Bangalore</p>
+              </div>
+              <div class="ttransf">-18 kg</div>
+            </div>
+          </div>
+          <div class="tcard">
+            <div class="tstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"The yoga sessions are absolutely transformational. I went from chronic back pain to feeling better than
+              in my 20s. Highly recommend!"</p>
+            <div class="tauth">
+              <div class="tav" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)">P</div>
+              <div>
+                <h4>Priya Mehta</h4>
+                <p>Marketing Manager, Mumbai</p>
+              </div>
+              <div class="ttransf">Pain Free</div>
+            </div>
+          </div>
+          <div class="tcard">
+            <div class="tstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p>"CultPass Elite is worth every rupee. Access to every centre means I never miss a workout even while
+              travelling."</p>
+            <div class="tauth">
+              <div class="tav" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">R</div>
+              <div>
+                <h4>Rohan Verma</h4>
+                <p>Business Consultant, Delhi</p>
+              </div>
+              <div class="ttransf">+12kg Muscle</div>
+            </div>
+          </div>
+          <div class="tcard">
+            <div class="tstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Swimming and badminton courts are premium quality. My kids love the sports programs. Best family fitness
+              decision ever!"</p>
+            <div class="tauth">
+              <div class="tav" style="background:linear-gradient(135deg,#fa709a,#fee140)">S</div>
+              <div>
+                <h4>Sunita Rao</h4>
+                <p>Doctor, Hyderabad</p>
+              </div>
+              <div class="ttransf">Family Fit</div>
+            </div>
+          </div>
+          <div class="tcard">
+            <div class="tstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"From couch potato to running 10km — thanks to structured training programs and the amazing community at
+              cult.fit!"</p>
+            <div class="tauth">
+              <div class="tav" style="background:linear-gradient(135deg,#0fd850,#f9f047)">K</div>
+              <div>
+                <h4>Karan Bhatia</h4>
+                <p>Entrepreneur, Pune</p>
+              </div>
+              <div class="ttransf">10K Runner</div>
+            </div>
+          </div>
+        </div>
+        <div class="car-ctrl"><button class="car-btn" id="tPrev"><i class="fas fa-chevron-left"></i></button>
+          <div class="dots" id="dots"><span class="dot active"></span><span class="dot"></span><span
+              class="dot"></span><span class="dot"></span><span class="dot"></span></div><button class="car-btn"
+            id="tNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULT STORE -->
+  <section class="cult-store" id="store">
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">Cult Store</span>
+        <h2>Gear Up with <span class="grad">Cult Store</span></h2>
+        <p>Premium fitness gear, supplements, and apparel engineered for performance</p>
+      </div>
+      <div class="store-grid">
+        <div class="scard">
+          <div class="simg-wrap">
+            <div class="simg-bg" style="background:linear-gradient(135deg,#667eea,#764ba2)"><i
+                class="fas fa-tshirt"></i></div>
+            <div class="sbdg">New</div>
+          </div>
+          <div class="sinfo">
+            <h3>Performance Tee</h3>
+            <p>Moisture-wicking, breathable training tee</p>
+            <div class="sprice"><span class="scur">Rs. 899</span><span class="sorig">Rs. 1299</span></div>
+          </div>
+        </div>
+        <div class="scard">
+          <div class="simg-wrap">
+            <div class="simg-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c)"><i
+                class="fas fa-capsules"></i></div>
+            <div class="sbdg best">Bestseller</div>
+          </div>
+          <div class="sinfo">
+            <h3>Whey Protein 2kg</h3>
+            <p>25g protein per serving, 6 flavours</p>
+            <div class="sprice"><span class="scur">Rs. 2,499</span><span class="sorig">Rs. 3,499</span></div>
+          </div>
+        </div>
+        <div class="scard">
+          <div class="simg-wrap">
+            <div class="simg-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><i
+                class="fas fa-shoe-prints"></i></div>
+          </div>
+          <div class="sinfo">
+            <h3>Training Shoes</h3>
+            <p>Lightweight cross-training footwear</p>
+            <div class="sprice"><span class="scur">Rs. 3,299</span><span class="sorig">Rs. 4,999</span></div>
+          </div>
+        </div>
+        <div class="scard">
+          <div class="simg-wrap">
+            <div class="simg-bg" style="background:linear-gradient(135deg,#fa709a,#fee140)"><i class="fas fa-tint"></i>
+            </div>
+            <div class="sbdg">Sale</div>
+          </div>
+          <div class="sinfo">
+            <h3>Smart Water Bottle</h3>
+            <p>Hydration tracking with LED reminder</p>
+            <div class="sprice"><span class="scur">Rs. 699</span><span class="sorig">Rs. 999</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="store-cta"><a href="https://cultstore.com" target="_blank" rel="noopener noreferrer"
+          class="btn-prim-lg">Shop All Products <i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-sec" id="stats">
+    <div class="stats-bg">
+      <div class="sorb-1"></div>
+      <div class="sorb-2"></div>
+    </div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="sitem">
+          <div class="sico"><i class="fas fa-users"></i></div>
+          <h3 class="snum" data-count="5" data-suf="M+">0</h3>
+          <p>Happy Members</p>
+        </div>
+        <div class="sitem">
+          <div class="sico"><i class="fas fa-building"></i></div>
+          <h3 class="snum" data-count="400" data-suf="+">0</h3>
+          <p>Premium Centres</p>
+        </div>
+        <div class="sitem">
+          <div class="sico"><i class="fas fa-map-marker-alt"></i></div>
+          <h3 class="snum" data-count="40" data-suf="+">0</h3>
+          <p>Cities Covered</p>
+        </div>
+        <div class="sitem">
+          <div class="sico"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3 class="snum" data-count="5000" data-suf="+">0</h3>
+          <p>Expert Trainers</p>
+        </div>
+        <div class="sitem">
+          <div class="sico"><i class="fas fa-star"></i></div>
+          <h3 class="snum" data-count="48" data-dec="true" data-suf="">0</h3>
+          <p>Average Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section class="app-sec" id="app">
+    <div class="container">
+      <div class="app-body">
+        <div class="app-left">
+          <span class="sec-badge">Mobile App</span>
+          <h2>Fitness in Your <span class="grad">Pocket</span></h2>
+          <p class="app-desc">Book classes, track workouts, monitor health stats, and connect with your trainer - all
+            from the cult.fit app.</p>
+          <div class="app-feats">
+            <div class="af">
+              <div class="af-ico"><i class="fas fa-calendar-check"></i></div>
+              <div>
+                <h4>Easy Booking</h4>
+                <p>Book any class, anytime in seconds</p>
+              </div>
+            </div>
+            <div class="af">
+              <div class="af-ico"><i class="fas fa-chart-line"></i></div>
+              <div>
+                <h4>Progress Tracking</h4>
+                <p>Monitor your journey with smart analytics</p>
+              </div>
+            </div>
+            <div class="af">
+              <div class="af-ico"><i class="fas fa-video"></i></div>
+              <div>
+                <h4>Live Classes</h4>
+                <p>Join live and on-demand workouts</p>
+              </div>
+            </div>
+            <div class="af">
+              <div class="af-ico"><i class="fas fa-user-friends"></i></div>
+              <div>
+                <h4>Community</h4>
+                <p>Connect with 5M+ fitness enthusiasts</p>
+              </div>
+            </div>
+          </div>
+          <p class="dl-lbl">Download the app now</p>
+          <div class="app-btns">
+            <a href="#" class="app-btn"><i class="fab fa-apple fa-2x"></i>
+              <div><span>Download on the</span><strong>App Store</strong></div>
+            </a>
+            <a href="#" class="app-btn"><i class="fab fa-google-play fa-2x"></i>
+              <div><span>Get it on</span><strong>Google Play</strong></div>
+            </a>
+          </div>
+          <div class="qr-sec">
+            <div class="qr-box">
+              <div class="qr-inner"><strong>C</strong></div>
+            </div>
+            <p>Scan to download</p>
+          </div>
+        </div>
+        <div class="app-right">
+          <div class="phone-wrap">
+            <div class="phone-glow"></div>
+            <div class="phone-mock">
+              <div class="phone-screen">
+                <div class="pbar"><span>9:41</span>
+                  <div><i class="fas fa-signal fa-xs"></i> <i class="fas fa-wifi fa-xs"></i> <i
+                      class="fas fa-battery-full fa-xs"></i></div>
+                </div>
+                <div class="pcont">
+                  <div class="phdr"><span>Good Morning, Arjun</span>
+                    <div class="pav">A</div>
+                  </div>
+                  <div class="pring-card">
+                    <svg viewBox="0 0 36 36" class="rsvg">
+                      <path class="rbg"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="rfill" stroke-dasharray="75, 100"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><text x="18"
+                        y="20.35" class="rtxt">75%</text>
+                    </svg>
+                    <div>
+                      <h4>Today's Goal</h4>
+                      <p>637/850 kcal</p><span class="ontrack">On Track!</span>
+                    </div>
+                  </div>
+                  <div class="pclasses">
+                    <h5>Upcoming Classes</h5>
+                    <div class="pcls">
+                      <div class="pcdot" style="background:#f093fb"></div>
+                      <div><span>Morning Yoga</span><span>7:00 AM Studio 3</span></div><button>Join</button>
+                    </div>
+                    <div class="pcls">
+                      <div class="pcdot" style="background:#4facfe"></div>
+                      <div><span>HIIT Blast</span><span>6:00 PM Studio 1</span></div><button>Join</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- BLOG -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">Fitness Blog</span>
+        <h2>Expert <span class="grad">Insights</span></h2>
+        <p>Tips, guides, and stories to fuel your fitness journey</p>
+      </div>
+      <div class="blog-grid">
+        <div class="bcard feat-blog">
+          <div class="bimg-wrap"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+              alt="HIIT Blog" />
+            <div class="bcat">Fitness Tips</div>
+          </div>
+          <div class="binfo">
+            <div class="bmeta"><i class="fas fa-clock"></i> 5 min read</div>
+            <h3>Why HIIT is the Future of Modern Fitness Training</h3>
+            <p>Discover how high-intensity interval training maximizes fat burn in half the time of traditional
+              cardio...</p><a href="#" class="brm">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="bcard">
+          <div class="bimg-wrap sm"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80"
+              alt="Nutrition" />
+            <div class="bcat">Nutrition</div>
+          </div>
+          <div class="binfo">
+            <div class="bmeta"><i class="fas fa-clock"></i> 4 min read</div>
+            <h3>The Complete Guide to Pre-Workout Nutrition</h3>
+            <p>What to eat before a workout to maximize performance...</p><a href="#" class="brm">Read More <i
+                class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="bcard">
+          <div class="bimg-wrap sm"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80"
+              alt="Yoga" />
+            <div class="bcat">Yoga</div>
+          </div>
+          <div class="binfo">
+            <div class="bmeta"><i class="fas fa-clock"></i> 6 min read</div>
+            <h3>10 Yoga Poses That Will Transform Your Mornings</h3>
+            <p>Start every day with these energizing yoga poses...</p><a href="#" class="brm">Read More <i
+                class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-cta"><a href="#" class="btn-out-std">View All Articles <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="sec-hdr"><span class="sec-badge">FAQ</span>
+        <h2>Frequently Asked <span class="grad">Questions</span></h2>
+        <p>Everything you need to know about cult.fit</p>
+      </div>
+      <div class="faq-grid">
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>What is CultPass and how does it
+              work?</span><i class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>CultPass is your all-in-one fitness membership giving unlimited access to gym sessions, group classes,
+              yoga, sports, and more at cult.fit centres across India. Simply book through the app and show your QR code
+              at the centre!</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>Can I try cult.fit before committing to a
+              membership?</span><i class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>Absolutely! We offer a free 7-day trial for all new members with no credit card required. Full access to
+              all facilities and classes during your trial period.</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>How do I book a class or gym session?</span><i
+              class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>Download the cult.fit app, choose your preferred class, select a time, and confirm. You receive a QR code
+              to show at the centre. Book up to 7 days in advance!</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>Are there cult.fit centres near me?</span><i
+              class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>cult.fit has 400+ centres across 40+ cities including Bangalore, Mumbai, Delhi, Hyderabad, Chennai, Pune,
+              Kolkata, and many more. Use the app to find the nearest centre.</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>What types of classes are available?</span><i
+              class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>We offer 200+ workout formats including Yoga, Zumba, HIIT, Boxing, Pilates, Strength Training, Cycling,
+              Dance, and many more. New classes are added regularly!</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>Can I pause or cancel my membership?</span><i
+              class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>Yes! Pause for up to 30 days per year or cancel anytime from the app. No questions asked!</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>Is Cult Care included in my
+              membership?</span><i class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>Cult Care is a separate service. CultPass Elite members get discounted rates. All members can access
+              basic health assessments at no extra cost.</p>
+          </div>
+        </div>
+        <div class="fitem"><button class="fq" aria-expanded="false"><span>Do you offer corporate memberships?</span><i
+              class="fas fa-plus fi"></i></button>
+          <div class="fa-ans">
+            <p>Yes! Special corporate wellness programs are available for companies. Contact us at corporate@cult.fit
+              for details.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-body">
+        <div class="cleft">
+          <span class="sec-badge">Get In Touch</span>
+          <h2>Start Your <span class="grad">Journey</span></h2>
+          <p>Have questions? We would love to hear from you.</p>
+          <div class="cinfo">
+            <div class="ci">
+              <div class="ci-ico"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p>hello@cult.fit</p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="fas fa-phone"></i></div>
+              <div>
+                <h4>Phone</h4>
+                <p>1800-123-8642</p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4>Headquarters</h4>
+                <p>#17/17C BDA 3rd Sector, HSR Layout, Bengaluru 560102</p>
+              </div>
+            </div>
+          </div>
+          <div class="csocial">
+            <a href="https://www.instagram.com/wearecult/" target="_blank" rel="noopener" class="csoc insta"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/wearecultofficial" target="_blank" rel="noopener" class="csoc fb"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/we_are_cult" target="_blank" rel="noopener" class="csoc tw"><i
+                class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCSE72IaHOL-1Tv-m3JHE4Cg" target="_blank" rel="noopener"
+              class="csoc yt"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="cright">
+          <form class="cform" id="cForm">
+            <div class="form-row">
+              <div class="fgrp"><label>First Name</label><input type="text" placeholder="Arjun" required /></div>
+              <div class="fgrp"><label>Last Name</label><input type="text" placeholder="Sharma" required /></div>
+            </div>
+            <div class="fgrp"><label>Email</label><input type="email" placeholder="arjun@example.com" required /></div>
+            <div class="fgrp"><label>Phone</label><input type="tel" placeholder="+91 98765 43210" /></div>
+            <div class="fgrp"><label>Subject</label><select>
+                <option value="">Select a topic</option>
+                <option>Membership Inquiry</option>
+                <option>Corporate Partnership</option>
+                <option>Technical Support</option>
+                <option>Feedback</option>
+                <option>Other</option>
+              </select></div>
+            <div class="fgrp"><label>Message</label><textarea rows="4"
+                placeholder="Tell us how we can help..."></textarea></div>
+            <button type="submit" class="btn-prim-full">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="nl-band">
+      <div class="container">
+        <div class="nl-wrap">
+          <div class="nl-txt">
+            <h3>Stay Fit, Stay Updated</h3>
+            <p>Get the latest fitness tips, offers, and cult.fit updates in your inbox.</p>
+          </div>
+          <form class="nlform" id="nlForm"><input type="email" placeholder="Enter your email address" /><button
+              type="submit">Subscribe <i class="fas fa-arrow-right"></i></button></form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div class="container">
+        <div class="fgrid">
+          <div class="fbrand">
+            <a href="#" class="flogo"><span class="lc">C</span>ult<span class="ld">.</span>fit</a>
+            <p>A fitness movement worth breaking a sweat for. India's most premium fitness platform since 2016.</p>
+            <div class="fsocial"><a href="https://www.instagram.com/wearecult/" target="_blank" rel="noopener"><i
+                  class="fab fa-instagram"></i></a><a href="https://www.facebook.com/wearecultofficial" target="_blank"
+                rel="noopener"><i class="fab fa-facebook-f"></i></a><a href="https://x.com/we_are_cult" target="_blank"
+                rel="noopener"><i class="fab fa-twitter"></i></a><a
+                href="https://www.youtube.com/channel/UCSE72IaHOL-1Tv-m3JHE4Cg" target="_blank" rel="noopener"><i
+                  class="fab fa-youtube"></i></a></div>
+            <div class="fapps"><a href="#"><i class="fab fa-apple"></i> App Store</a><a href="#"><i
+                  class="fab fa-google-play"></i> Play Store</a></div>
+          </div>
+          <div class="fcol">
+            <h4>Fitness</h4>
+            <ul>
+              <li><a href="#">Group Classes</a></li>
+              <li><a href="#">Gym Sessions</a></li>
+              <li><a href="#">Yoga</a></li>
+              <li><a href="#">Zumba</a></li>
+              <li><a href="#">HIIT</a></li>
+              <li><a href="#">Boxing</a></li>
+              <li><a href="#">Pilates</a></li>
+              <li><a href="#">Cycling</a></li>
+            </ul>
+          </div>
+          <div class="fcol">
+            <h4>Sports</h4>
+            <ul>
+              <li><a href="#">Swimming</a></li>
+              <li><a href="#">Badminton</a></li>
+              <li><a href="#">Football</a></li>
+              <li><a href="#">Cricket</a></li>
+              <li><a href="#">Squash</a></li>
+              <li><a href="#">Tennis</a></li>
+              <li><a href="#">Table Tennis</a></li>
+              <li><a href="#">Basketball</a></li>
+            </ul>
+          </div>
+          <div class="fcol">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Cult Care</a></li>
+              <li><a href="#">Cult Store</a></li>
+              <li><a href="#">Nutrition</a></li>
+              <li><a href="#">Physiotherapy</a></li>
+              <li><a href="#">Mental Wellness</a></li>
+              <li><a href="#">Corporate Plans</a></li>
+              <li><a href="#">Personal Training</a></li>
+              <li><a href="#">Diet Plans</a></li>
+            </ul>
+          </div>
+          <div class="fcol">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Partner With Us</a></li>
+              <li><a href="#">Find a Centre</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Investors</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <div class="container">
+        <div class="fbtm-row">
+          <p>2026 cult.fit (Curefit Healthcare Pvt. Ltd.) All Rights Reserved</p>
+          <div class="flegal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie
+              Policy</a><a href="#">Refund Policy</a></div>
+        </div>
+        <p class="fdisclaim">This is a UI/UX redesign case study created for educational purposes. Not an official
+          cult.fit website.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+// ===== CULT.FIT PREMIUM REDESIGN 2026 - JavaScript =====
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ---- LOADER ----
+  const loader = document.getElementById('loader');
+  setTimeout(() => { loader.classList.add('hidden'); }, 2400);
+
+  // ---- THEME TOGGLE ----
+  const body = document.getElementById('body');
+  const themeBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const savedTheme = localStorage.getItem('cultfitTheme') || 'dark';
+  if (savedTheme === 'light') {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  }
+  themeBtn && themeBtn.addEventListener('click', () => {
+    const isLight = body.classList.contains('light-mode');
+    body.classList.toggle('light-mode', !isLight);
+    body.classList.toggle('dark-mode', isLight);
+    themeIcon.classList.toggle('fa-moon', isLight);
+    themeIcon.classList.toggle('fa-sun', !isLight);
+    localStorage.setItem('cultfitTheme', isLight ? 'dark' : 'light');
+  });
+
+  // ---- NAVBAR SCROLL ----
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const curr = window.scrollY;
+    navbar.classList.toggle('scrolled', curr > 50);
+    lastScroll = curr;
+  });
+
+  // ---- BACK TO TOP ----
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    btt && btt.classList.toggle('show', window.scrollY > 400);
+  });
+  btt && btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ---- HAMBURGER MENU ----
+  const hamBtn = document.getElementById('hamBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamBtn && hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks && navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamBtn.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // ---- ACTIVE NAV LINK ----
+  const sections = document.querySelectorAll('section[id]');
+  const allNavLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    allNavLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
+
+  // ---- SEARCH ----
+  const searchBtn = document.getElementById('searchBtn');
+  const searchOv = document.getElementById('searchOv');
+  const closeSearch = document.getElementById('closeSearch');
+  const searchInput = document.getElementById('searchInput');
+  searchBtn && searchBtn.addEventListener('click', () => { searchOv.classList.toggle('open'); searchOv.classList.contains('open') && searchInput.focus(); });
+  closeSearch && closeSearch.addEventListener('click', () => searchOv.classList.remove('open'));
+  document.querySelectorAll('.search-tags span').forEach(tag => {
+    tag.addEventListener('click', () => { searchInput.value = tag.textContent; searchInput.focus(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') searchOv.classList.remove('open'); });
+
+  // ---- FAB ----
+  const fabMain = document.getElementById('fabMain');
+  const fabMenu = document.getElementById('fabMenu');
+  fabMain && fabMain.addEventListener('click', () => fabMenu.classList.toggle('open'));
+  document.addEventListener('click', e => { if (fabMain && !fabMain.contains(e.target) && fabMenu && !fabMenu.contains(e.target)) fabMenu.classList.remove('open'); });
+
+  // ---- PROGRAMS FILTER ----
+  const filterBtns = document.querySelectorAll('.flt-btn');
+  const progCards = document.querySelectorAll('.prog-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.getAttribute('data-f');
+      progCards.forEach(card => {
+        if (f === 'all' || card.getAttribute('data-t') === f) {
+          card.style.display = '';
+          card.classList.remove('hidden');
+          card.style.animation = 'fadeIn 0.4s ease';
+        } else {
+          card.classList.add('hidden');
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ---- TESTIMONIALS CAROUSEL ----
+  const track = document.getElementById('testiTrack');
+  const prevBtn = document.getElementById('tPrev');
+  const nextBtn = document.getElementById('tNext');
+  const dotsWrap = document.getElementById('dots');
+  const cards = track ? track.querySelectorAll('.tcard') : [];
+  let currentSlide = 0;
+  const getVisibleCount = () => window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+
+  function updateCarousel() {
+    const visible = getVisibleCount();
+    const maxSlide = Math.max(0, cards.length - visible);
+    currentSlide = Math.min(currentSlide, maxSlide);
+    if (track) {
+      const cardWidth = track.querySelector('.tcard') ? track.querySelector('.tcard').offsetWidth : 0;
+      const gap = 28;
+      track.style.transform = "translateX(-" + (currentSlide * (cardWidth + gap)) + "px)";
+    }
+    document.querySelectorAll('#dots .dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  prevBtn && prevBtn.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; updateCarousel(); } });
+  nextBtn && nextBtn.addEventListener('click', () => {
+    const visible = getVisibleCount();
+    const maxSlide = Math.max(0, cards.length - visible);
+    if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
+  });
+  dotsWrap && dotsWrap.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => { currentSlide = i; updateCarousel(); });
+  });
+  window.addEventListener('resize', updateCarousel);
+
+  // Auto-slide testimonials
+  setInterval(() => {
+    const visible = getVisibleCount();
+    const maxSlide = Math.max(0, cards.length - visible);
+    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    updateCarousel();
+  }, 5000);
+
+  // ---- BILLING TOGGLE ----
+  const billingToggle = document.getElementById('billingToggle');
+  const priceAmts = document.querySelectorAll('.pamt');
+  billingToggle && billingToggle.addEventListener('change', () => {
+    const yearly = billingToggle.checked;
+    priceAmts.forEach(el => {
+      el.textContent = yearly ? el.getAttribute('data-y') : el.getAttribute('data-m');
+    });
+  });
+
+  // ---- FAQ ACCORDION ----
+  document.querySelectorAll('.fq').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.fitem').forEach(i => i.classList.remove('active'));
+      document.querySelectorAll('.fq').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ---- SCROLL ANIMATIONS ----
+  const animElements = document.querySelectorAll('.sec-hdr, .cat-card, .prog-card, .price-card, .care-card, .tcard, .scard, .bcard, .sitem, .fitem, .ci, .af, .amb-body, .hero-text, .app-left');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  animElements.forEach(el => {
+    el.classList.add('fade-up');
+    observer.observe(el);
+  });
+
+  // ---- ANIMATED COUNTERS ----
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-count')) || 0;
+    const isDec = el.getAttribute('data-dec') === 'true';
+    const suffix = el.getAttribute('data-suf') || '';
+    const duration = 2000;
+    const start = Date.now();
+    const step = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      if (isDec) {
+        el.textContent = (current / 10).toFixed(1) + suffix;
+      } else if (target >= 1000000) {
+        el.textContent = (current / 1000000).toFixed(0) + 'M+';
+      } else if (target >= 1000) {
+        el.textContent = (current >= 1000 ? current.toLocaleString() : current) + suffix;
+      } else {
+        el.textContent = current + suffix;
+      }
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = 'true';
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.snum, .ach-num, .hnum').forEach(el => counterObserver.observe(el));
+
+  // Hero stats counter (simple)
+  document.querySelectorAll('.hnum').forEach(el => {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const target = parseInt(el.getAttribute('data-count'));
+          const unit = el.nextElementSibling ? el.nextElementSibling.textContent : '';
+          let start = 0;
+          const dur = 2000;
+          const t0 = Date.now();
+          const step = () => {
+            const elapsed = Date.now() - t0;
+            const p = Math.min(elapsed / dur, 1);
+            start = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+            el.textContent = start;
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.5 });
+    heroObserver.observe(el);
+  });
+
+  // ---- CONTACT FORM ----
+  const cForm = document.getElementById('cForm');
+  cForm && cForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = cForm.querySelector('button[type="submit"]');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#4ade80';
+    setTimeout(() => { btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>'; btn.style.background = ''; }, 3000);
+  });
+
+  // ---- NEWSLETTER FORM ----
+  const nlForm = document.getElementById('nlForm');
+  nlForm && nlForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = nlForm.querySelector('button');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#4ade80';
+    setTimeout(() => { btn.innerHTML = 'Subscribe <i class="fas fa-arrow-right"></i>'; btn.style.background = ''; }, 3000);
+  });
+
+  // ---- SMOOTH SCROLL FOR NAV LINKS ----
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // ---- SVG GRADIENT FOR RING CHART ----
+  const svgNS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.rsvg').forEach(svg => {
+    const defs = document.createElementNS(svgNS, 'defs');
+    const grad = document.createElementNS(svgNS, 'linearGradient');
+    grad.setAttribute('id', 'grad1');
+    const s1 = document.createElementNS(svgNS, 'stop');
+    s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', '#6c63ff');
+    const s2 = document.createElementNS(svgNS, 'stop');
+    s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', '#ff6b6b');
+    grad.appendChild(s1); grad.appendChild(s2);
+    defs.appendChild(grad); svg.appendChild(defs);
+  });
+
+  console.log('%ccult.fit Premium Redesign 2026', 'font-size:18px;font-weight:900;background:linear-gradient(135deg,#6c63ff,#ff6b6b);-webkit-background-clip:text;color:transparent;padding:4px;');
+  console.log('UI/UX Case Study - Educational Purpose Only');
+});
+
+</script>
+</body>
+
+</html>
